@@ -45,7 +45,7 @@ const loginUser = asyncHandler(async(req,res)=>{
                 id: user.id,
             }}
             ,process.env.ACCESS_SECRET_TOKEN,{
-                expiresIn:"1m"
+                expiresIn:"15m"
             }
         )
         res.status(200).json({acessToken})
@@ -58,9 +58,7 @@ res.json({message:"login successfull"})
 });
 
 const currentUser = asyncHandler(async (req,res)=>{
-    res.json({
-        message:"Current user Details"
-    })
+    res.json(req.user)
 });
 
 module.exports={registerUser,loginUser,currentUser};
